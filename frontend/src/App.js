@@ -13,7 +13,7 @@ function App() {
 
   const fetchItems = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/items');
+      const response = await fetch('http://localhost:3000/api/items');
       const data = await response.json();
       setItems(data);
     } catch (error) {
@@ -28,14 +28,14 @@ function App() {
     try {
       if (editingId) {
         // Update existing item
-        await fetch(`http://localhost:5000/api/items/${editingId}`, {
+        await fetch(`http://localhost:3000/api/items/${editingId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(itemData),
         });
       } else {
         // Create new item
-        await fetch('http://localhost:5000/api/items', {
+        await fetch('http://localhost:3000/api/items', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(itemData),
@@ -59,7 +59,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/items/${id}`, {
+      await fetch(`http://localhost:3000/api/items/${id}`, {
         method: 'DELETE',
       });
       fetchItems();
